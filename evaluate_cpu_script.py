@@ -9,10 +9,10 @@ import csv
 
 # 0. Open csv file to store the data
 fields = ['RAM(MB)', 'Cores', 'Workload(%)', 'YOLOtime(s)']
-ram =  5000 #MB Default RAM value
-ram_low = 1000
-ram_high = 5000
-epoch = 2 #number of experiments
+ram =  2000 #MB Default RAM value
+ram_low = 2000
+ram_high = 3000
+epoch = 1 #number of experiments
 print("Starting....")
 #====================================================1. Core vs Execution Time
 # Create File to store data
@@ -28,7 +28,7 @@ else:
     csvwriter = csv.writer(csvfile)
 
 #Loop to evaluate YOLO Execution Time
-for num_cpu_cores in range(1, 7, 1):
+for num_cpu_cores in range(1, 4, 1):
     core_list = '' # generate list of cores: string
     for cores in range(num_cpu_cores):
         core_list += '{}'.format(cores) #use core 11, 12
@@ -77,7 +77,7 @@ else:
     csvwriter = csv.writer(csvfile)
 
 #Loop to evaluate YOLO Execution Time
-for workload_cpu_stress in range(10, 70, 10): #for workload 10%, 20%...60%
+for workload_cpu_stress in range(40, 60, 10): #for workload 10%, 20%...60%
     num_cpu_cores = 1 # assign to only single core
     core_list = '' # generate list of cores: string
     for cores in range(num_cpu_cores):
